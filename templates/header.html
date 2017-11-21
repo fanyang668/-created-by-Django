@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a  class="navbar-brand" href="http://www.baidu.com"><img src="{% static "image/logo.jpeg" %}" width="100px">
+            </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="{% url "blog:blog_title" %}">BLOG</a></li>
+                <li><a href="{% url "article:article_titles" %}">Articles</a></li>
+                <li><a href="{% url "image:falls_images" %}">Beauty-Img</a></li>
+            </ul>
+            <ur class="nav navbar-nav navbar-right" style="margin-right:10px">
+                {% if user.is_authenticated %}
+                    <li>
+                        <div class="dropdown" style="margin-top: 8px">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu"
+                            data-toggle="dropdown">{{ user.username }}<span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
+                                <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
+                                <li><a href="{% url 'article:article_column' %}">后台管理</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="{% url 'account:user_logout' %}">Exit</a></li>
+                {% else %}
+                    <li><a href="{% url 'account:user_login' %}">Login</a></li>
+                    <li><a href="{% url 'account:user_register' %}">Sign up</a></li>
+                {% endif %}
+            </ur>
+        </div>
+    </nav>
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>

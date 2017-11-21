@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}blog titles{% endblock %}
+
+{% block content %}
+    <div class="row text-center vertical-middle-sm">
+        <h1>我的博客</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 xol-md-8">
+        <ul>
+        {% for blog in blogs %}
+            <li><a href="{{ blog.id }}">{{ blog.title }}</a></li>
+        {% endfor %}
+        </ul>
+        </div>
+        <div class="col-xs-6 col-md-4">
+        <h2>Love and Peace</h2>
+        <p>撸起袖子加油干！</p>
+        <img src="{% static "image/gintama.jpeg" %}" style="width: 200px">
+        </div>
+    </div>
+{% endblock %}
